@@ -1,0 +1,7 @@
+[user]
+	email = eric2043@gmail.com
+	name = Eric Dong
+[credential]
+	helper = "!f() { /home/node/.vscode-server/bin/6261075646f055b99068d3688932416f2346dd3b/node /tmp/vscode-remote-containers-cdf6691bcc2bdd8259c0a92fce042d26306bd3d7.js $*; }; f"
+[core]
+	editor = nvim
