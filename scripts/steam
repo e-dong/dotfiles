@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#dpi=$(xdpyinfo | grep dots | awk '{print $2}' | cut -dx -f 1)
+#echo "Xft.dpi: $dpi" | xrdb
+scale_factor=$(dc -e "2k $(xrdb -q | grep Xft.dpi | cut -f 2) 96 / p")
+#export GDK_SCALE="$scale_factor" <- this also works
+exec /usr/lib/steam/steam -forcedesktopscaling "$scale_factor" "$@"
+# Original
+#exec /usr/lib/steam/steam "$@"

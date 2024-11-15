@@ -1,0 +1,58 @@
+# Bootstrap script
+- name: Install pacman packages
+  hosts: localhost
+  tasks:
+    - name: Install Packages
+      become: yes
+      community.general.pacman:
+        name:
+          - git
+          - neovim
+          - tmux
+        state: present
+- name: symlink dotfiles
+  hosts: localhost
+  roles:
+    - user
+  tasks:
+    - name: Get repo root
+      command: "git rev-parse --show-toplevel"
+      register: repo_root
+    - name: link .gitconfig
+      ansible.builtin.file:
+        src: "{{ repo_root.stdout }}/.gitconfig"
+        dest: "{{ user_home }}/.gitconfig"
+        state: link
+        force: true
+        follow: false
+    - name: link .tmux.conf
+      ansible.builtin.file:
+        src: "{{ repo_root.stdout }}/.tmux.conf"
+        dest: "{{ user_home }}/.tmux.conf"
+        state: link
+        force: true
+        follow: false
+    - name: link .wezterm.lua
+      ansible.builtin.file:
+        src: "{{ repo_root.stdout }}/.wezterm.lua"
+        dest: "{{ user_home }}/.wezterm.lua"
+        state: link
+        force: true
+        follow: false
+- name: Setup yay AUR helper
+  hosts: localhost
+  roles:
+    - user
+  tasks: 
+    - name: Clone repo
+      ansible.builtin.git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: "{{ user_home }}/tools/yay"
+      register: result
+
+    - name: makepkg build
+      ansible.builtin.shell:
+        cmd: makepkg -fsi
+        chdir: "{{ user_home }}/tools/yay"
+      when: result is changed
+
