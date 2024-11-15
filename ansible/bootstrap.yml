@@ -39,6 +39,34 @@
         state: link
         force: true
         follow: false
+    - name: link .config/nvim
+      ansible.builtin.file:
+        src: "{{ repo_root.stdout }}/.config/nvim"
+        dest: "{{ user_home }}/.config/nvim"
+        state: link
+        force: true
+        follow: false
+    - name: link .local/theme
+      ansible.builtin.file:
+        src: "{{ repo_root.stdout }}/.local/theme"
+        dest: "{{ user_home }}/.local/theme"
+        state: link
+        force: true
+        follow: false
+    - name: link .screenlayout
+      ansible.builtin.file:
+        src: "{{ repo_root.stdout }}/.screenlayout"
+        dest: "{{ user_home }}/.screenlayout"
+        state: link
+        force: true
+        follow: false
+    - name: link scripts
+      ansible.builtin.file:
+        src: "{{ repo_root.stdout }}/scripts"
+        dest: "{{ user_home }}/scripts"
+        state: link
+        force: true
+        follow: false
 - name: Setup yay AUR helper
   hosts: localhost
   roles:
