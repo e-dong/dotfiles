@@ -14,7 +14,8 @@ if [[ -z ${diagonal_len_in} ]]; then
   exit 1
 fi
 
-# Set custom resolution on the host
+# Set custom resolution on the host via nvidia-settings
+nvidia-settings -a CurrentMetaMode="DPY-1: 1920x1080_144 @${width}x${height} +0+0 {ViewPortIn=${width}x${height}, ViewPortOut=1920x1080+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
 
 # Set up DPI from diagonal length of screen
 pixel_diag_len=$(echo "scale=5;sqrt(${width}^2+${height}^2)" | bc)
