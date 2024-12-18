@@ -9,4 +9,5 @@ nvidia-settings -a CurrentMetaMode="DPY-1: 1920x1080_144 @${width}x${height} +0+
 echo "Xft.dpi: $dpi" | xrdb
 $HOME/scripts/wallpaper.sh
 pkill dwm
-pkill slstatus
+slstatus &
+
