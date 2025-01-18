@@ -28,25 +28,63 @@ config.window_padding = {
 }
 
 config.keys = {
-  -- Turn off the default CMD-m Hide action, allowing CMD-m to
-  -- be potentially recognized and handled by the tab
-  {
-    key = 'Enter',
-    mods = 'ALT',
-    action = wezterm.action.DisableDefaultAssignment,
-  },
-  {
-    key = 'F11',
-    action = wezterm.action.ToggleFullScreen,
-  },
-  --{
-   -- Key = "\\",
-   -- mods = 'CTRL',
-  --  action = wezterm.action.DisableDefaultAssignment
---  }
+	-- Turn off the default CMD-m Hide action, allowing CMD-m to
+	-- be potentially recognized and handled by the tab
+	{
+		key = "Enter",
+		mods = "ALT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "F11",
+		action = wezterm.action.ToggleFullScreen,
+	},
+	{
+		key = "h",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "h",
+		mods = "SHIFT|CTRL|ALT",
+		action = wezterm.action.AdjustPaneSize({ "Left", 1 }),
+	},
+	{
+		key = "l",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "l",
+		mods = "SHIFT|CTRL|ALT",
+		action = wezterm.action.AdjustPaneSize({ "Right", 1 }),
+	},
+	{
+		key = "k",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "k",
+		mods = "SHIFT|CTRL|ALT",
+		action = wezterm.action.AdjustPaneSize({ "Up", 1 }),
+	},
+	{
+		key = "j",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.ActivatePaneDirection("Down"),
+	},
+	{
+		key = "j",
+		mods = "SHIFT|CTRL|ALT",
+		action = wezterm.action.AdjustPaneSize({ "Down", 1 }),
+	},
+	--{
+	-- Key = "\\",
+	-- mods = 'CTRL',
+	--  action = wezterm.action.DisableDefaultAssignment
+	--  }
 }
-
 
 -- and finally, return the configuration to wezterm
 return config
-
