@@ -1,5 +1,5 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
@@ -17,17 +17,15 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 -- config.color_scheme = 'AdventureTime'
-config.color_scheme = 'Catppuccin Mocha'
+config.color_scheme = "Catppuccin Mocha"
 config.enable_tab_bar = false
-config.font = wezterm.font "FiraCode Nerd Font Mono"
+config.font = wezterm.font("FiraCode Nerd Font Mono")
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
-
-
 
 config.keys = {
   -- Turn off the default CMD-m Hide action, allowing CMD-m to
