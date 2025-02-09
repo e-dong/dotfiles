@@ -4,6 +4,9 @@ vim.g.maplocalleader = " "
 -- clear search
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 
+-- Expand any line diagnostic information
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "[L]ine [D]iagnostic" })
+
 -- Yank to clipboard with <leader>y
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
 
