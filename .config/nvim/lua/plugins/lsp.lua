@@ -8,7 +8,6 @@ return {
           "bash-language-server",
           "lua-language-server",
           "pyright",
-          "ruff-lsp",
           "ruff",
           "jdtls",
           -- Debug and Test Utils
@@ -71,13 +70,13 @@ return {
       })
 
       local on_attach = function(client, bufnr)
-        if client.name == 'ruff_lsp' then
+        if client.name == 'ruff' then
           -- Disable hover in favor of Pyright
           client.server_capabilities.hoverProvider = false
         end
       end
 
-      lspconfig.ruff_lsp.setup({
+      lspconfig.ruff.setup({
         on_attach = on_attach,
       })
 
