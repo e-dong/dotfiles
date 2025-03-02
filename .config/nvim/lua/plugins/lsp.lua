@@ -81,9 +81,8 @@ return {
       })
 
 
-      -- Set vim motion for <Space> + c + h to show code documentation about the code the cursor is currently over if available
-      vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "[C]ode [H]over Documentation" })
-      vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "[C]ode [H]over Documentation" })
+			-- Set vim motion for <Space> + c + h to show code documentation about the code the cursor is currently over if available
+			vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "[C]ode [H]over Documentation" })
 
       -- Set vim motion for <Space> + c + d to go where the code/variable under the cursor was defined
       vim.keymap.set("n", "<leader>cd", vim.lsp.buf.definition, { desc = "[C]ode Goto [D]efinition" })
