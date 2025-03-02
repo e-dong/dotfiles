@@ -8,7 +8,6 @@ return {
           "bash-language-server",
           "lua-language-server",
           "pyright",
-          "ruff-lsp",
           "ruff",
           "jdtls",
           -- Debug and Test Utils
