@@ -1,19 +1,19 @@
+
 return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     config = function()
       require("mason-tool-installer").setup({
         ensure_installed = {
-          -- LSP
+          "ansible-language-server",
           "bash-language-server",
           "lua-language-server",
           "pyright",
           "ruff",
           "jdtls",
-          -- Debug and Test Utils
           "java-debug-adapter",
           "java-test",
-          -- linter and formatters
+          "ansible-lint",
           "stylua",
           "prettier",
           "google-java-format",
