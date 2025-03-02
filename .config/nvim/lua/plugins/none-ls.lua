@@ -12,12 +12,14 @@ return {
 				-- setup lua formatter
 				null_ls.builtins.formatting.stylua,
 				-- setup prettier to format languages that are not lua
-				null_ls.builtins.formatting.prettier,
+				null_ls.builtins.formatting.prettierd,
         -- JAVA
         null_ls.builtins.formatting.google_java_format,
         null_ls.builtins.diagnostics.checkstyle.with({
           extra_args = { "-c", "/google_checks.xml" },
         }),
+        require("none-ls.diagnostics.eslint"),
+        require("none-ls.code_actions.eslint"),
 			},
 		})
 
