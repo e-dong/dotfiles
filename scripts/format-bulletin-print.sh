@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script requires having the texlive-binextras and texlive-latexrecommended packages installed on ARCH
+# This script requires having the texlive-binextra and texlive-latexrecommended packages installed on ARCH
 
 [[ -z "${1}" ]] && echo "[ERROR]: input pdf file is required" && exit 1
 [[ ! -f "${1}" ]] && echo "[ERROR]: ${1} doesn't exist" && exit 1
