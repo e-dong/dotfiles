@@ -1,0 +1,32 @@
+{% if neovim_theme == "tokyonight" %}
+return {
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		require("tokyonight").setup()
+		vim.cmd([[colorscheme tokyonight]])
+	end,
+}
+{% elif neovim_theme == "catppuccin" %}
+return {
+	"catppuccin/nvim",
+	name = "catppuccin",
+	priority = 1000,
+	config = function()
+		require("catppuccin").setup({
+			flavour = "mocha",
+		})
+		vim.cmd([[ colorscheme catppuccin ]])
+	end,
+}
+{% elif neovim_theme == "shades_of_purple" %}
+return {
+  "Rigellute/shades-of-purple.vim",
+	name = "shades_of_purple",
+	priority = 1000,
+	config = function()
+		vim.cmd([[ colorscheme shades_of_purple ]])
+	end,
+}
+{% endif %}
