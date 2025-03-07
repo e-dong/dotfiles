@@ -1,23 +1,12 @@
-
 return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     config = function()
       require("mason-tool-installer").setup({
         ensure_installed = {
-          "ansible-language-server",
-          "bash-language-server",
-          "lua-language-server",
-          "pyright",
-          "ruff",
-          "jdtls",
-          "java-debug-adapter",
-          "java-test",
-          "ansible-lint",
-          "stylua",
-          "prettier",
-          "google-java-format",
-          "black",
+{% for tool in mason_tools %}
+          "{{ tool }}",
+{% endfor %}
         },
       })
     end,
@@ -41,7 +30,10 @@ return {
       local lspconfig = require("lspconfig")
 
       local configs = {
-        ansiblels = {},
+        ansiblels = {
+          filetypes = { "yaml", "yml", "ansible" },
+          root_dir = lspconfig.util.root_pattern("ansible", "roles", "playbooks")
+        },
         bashls = {},
         lua_ls = {},
         ruff = {
@@ -66,7 +58,7 @@ return {
             },
           },
         },
-        ts_ls = {},
+        ts_ls = {}
       }
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 

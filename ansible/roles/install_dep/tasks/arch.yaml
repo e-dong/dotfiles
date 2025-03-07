@@ -1,0 +1,28 @@
+---
+- name: Install Packages
+  become: true
+  community.general.pacman:
+    name:
+      - git
+      - neovim
+      - tmux
+    state: present
+- name: Clone yay
+  ansible.builtin.git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: "{{ ansible_facts['user_dir'] }}/tools/yay"
+    update: "yes"
+    version: master
+  register: git_result
+  changed_when: git_result.before != git_result.after
+- name: Check packagelist
+  ansible.builtin.command:
+    cmd: makepkg --packagelist
+    chdir: "{{ ansible_facts['user_dir'] }}/tools/yay"
+  register: file
+  changed_when: false
+- name: Build yay
+  ansible.builtin.command:
+    cmd: makepkg -fsi
+    chdir: "{{ ansible_facts['user_dir'] }}/tools/yay"
+    creates: "{{ file.stdout }}"
