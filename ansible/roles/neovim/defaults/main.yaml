@@ -1,0 +1,16 @@
+neovim_theme: catppuccin
+lualine_theme: "{{ neovim_theme }}"
+mason_tools:
+  - "ansible-language-server"
+  - "bash-language-server"
+  - "lua-language-server"
+  - "pyright"
+  - "ruff"
+  - "jdtls"
+  - "java-debug-adapter"
+  - "java-test"
+  - "ansible-lint"
+  - "stylua"
+  - "prettier"
+  - "google-java-format"
+  - "black"
