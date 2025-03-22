@@ -29,3 +29,9 @@ vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current t
 vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+
+-- buffer management
+vim.keymap.set("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
+vim.keymap.set("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
+vim.keymap.set("n", "<leader>bx", "<cmd>bdelete<CR>", { desc = "Deletes current buffer" })
+
