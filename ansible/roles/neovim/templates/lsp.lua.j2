@@ -4,7 +4,7 @@ return {
     config = function()
       require("mason-tool-installer").setup({
         ensure_installed = {
-{% for tool in mason_tools %}
+{% for tool in neovim_mason_tools %}
           "{{ tool }}",
 {% endfor %}
         },

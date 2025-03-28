@@ -2,7 +2,7 @@ mac:
   hosts:
     MBP:
       neovim_theme: shades_of_purple
-      lualine_theme: palenight
+      neovim_lualine_theme: palenight
 arch:
   hosts:
     ezekiel:
@@ -10,7 +10,7 @@ arch:
       neovim_theme: tokyonight
     raspberry2:
       ansible_become_method: doas
-      mason_tools:
+      neovim_mason_tools:
         - "ansible-language-server"
         - "bash-language-server"
         - "pyright"
