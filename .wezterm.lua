@@ -40,6 +40,16 @@ config.keys = {
 		action = wezterm.action.ToggleFullScreen,
 	},
 	{
+		key = "%",
+		mods = "CTRL|ALT|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "v",
+		mods = "CTRL|ALT|SHIFT",
+		action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+	},
+	{
 		key = "h",
 		mods = "SHIFT|CTRL",
 		action = wezterm.action.ActivatePaneDirection("Left"),
