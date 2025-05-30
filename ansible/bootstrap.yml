@@ -39,7 +39,14 @@
         state: link
         force: true
         follow: false
-    - name: link .config/nvim
+    - name: Link .config/ghostty
+      ansible.builtin.file:
+        src: "{{ repo_root.stdout }}/.config/ghostty"
+        dest: "{{ user_home }}/.config/ghostty"
+        state: link
+        force: true
+        follow: false
+    - name: Link .config/nvim
       ansible.builtin.file:
         src: "{{ repo_root.stdout }}/.config/nvim"
         dest: "{{ user_home }}/.config/nvim"
