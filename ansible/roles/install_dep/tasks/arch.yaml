@@ -1,3 +1,4 @@
+# Install packages common for Arch and Artix systems
 ---
 - name: Install Packages
   become: true
@@ -23,6 +24,14 @@
   changed_when: false
 - name: Build yay
   ansible.builtin.command:
-    cmd: makepkg -fsi
+    cmd: makepkg --noconfirm
     chdir: "{{ ansible_facts['user_dir'] }}/tools/yay"
     creates: "{{ file.stdout }}"
+- name: Debug created yay file
+  ansible.builtin.debug:
+    var: file
+- name: Install yay
+  community.general.pacman:
+    name:
+      - "{{ file.stdout }}"
+  become: true
