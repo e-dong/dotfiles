@@ -1,2 +1,2 @@
-repo_root: "{{ ansible_facts['user_dir'] }}/repos/dotfiles"
-repo_root_controller: "/home/eric/repos/dotfiles"
+common_repo_root: "{{ ansible_facts['user_dir'] }}/repos/dotfiles"
+common_repo_root_controller: "/home/eric/repos/dotfiles"

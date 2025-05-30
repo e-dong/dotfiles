@@ -14,7 +14,7 @@
     mode: '744'
 - name: Copy base .config/nvim
   ansible.builtin.copy:
-    src: "{{ repo_root_controller }}/.config/nvim/"
+    src: "{{ common_repo_root_controller }}/.config/nvim/"
     dest: "{{ nvim_cfg_dir }}/"
     mode: '744'
 - name: Apply templates
