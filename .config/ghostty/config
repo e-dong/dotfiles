@@ -50,6 +50,9 @@ window-padding-x = 0
 window-padding-y = 0
 cursor-color = 89b4fa
 
+# fonts
+font-family = BitstromWera Nerd Font Mono
+
 # Keybindings
 keybind = ctrl+shift+k=goto_split:up
 keybind = ctrl+shift+j=goto_split:down
