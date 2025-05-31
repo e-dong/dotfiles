@@ -1,0 +1,6 @@
+# Bootstrap script
+- name: Setup neovim
+  hosts: all
+  roles:
+    - common
+    - neovim

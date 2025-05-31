@@ -1,0 +1,13 @@
+---
+- name: Debug
+  ansible.builtin.debug:
+    msg:
+      - "{{ ansible_facts }}"
+      # - name: Check become
+      #   ansible.builtin.shell:
+      #     cmd: "pacman -Qs | grep sudo"
+      #   register: check_sudo
+      #   changed_when: false
+- name: Install Arch deps
+  ansible.builtin.import_tasks: arch.yaml
+  when: ansible_facts['os_family'] | lower | regex_search('artix|arch')
