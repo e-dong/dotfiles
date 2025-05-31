@@ -8,30 +8,25 @@
       - neovim
       - tmux
     state: present
-- name: Clone yay
-  ansible.builtin.git:
-    repo: https://aur.archlinux.org/yay.git
-    dest: "{{ ansible_facts['user_dir'] }}/tools/yay"
-    update: "yes"
-    version: master
-  register: git_result
-  changed_when: git_result.before != git_result.after
-- name: Check packagelist
-  ansible.builtin.command:
-    cmd: makepkg --packagelist
-    chdir: "{{ ansible_facts['user_dir'] }}/tools/yay"
-  register: file
-  changed_when: false
-- name: Build yay
-  ansible.builtin.command:
-    cmd: makepkg --noconfirm
-    chdir: "{{ ansible_facts['user_dir'] }}/tools/yay"
-    creates: "{{ file.stdout }}"
-- name: Debug created yay file
-  ansible.builtin.debug:
-    var: file
-- name: Install yay
-  community.general.pacman:
-    name:
-      - "{{ file.stdout }}"
-  become: true
+- name: Create the `aur_builder` user
+  become: yes
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: yes
+    group: wheel
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    mode: 0644
+    validate: 'visudo -cf %s'
+- name: Install yay AUR Helper 
+  kewlfft.aur.aur:
+    name: yay
+    use: makepkg
+    state: present
+  become: yes
+  become_user: aur_builder
