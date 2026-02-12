@@ -1,0 +1,26 @@
+mac:
+  hosts:
+    MBP:
+      neovim_theme: shades_of_purple
+      neovim_lualine_theme: palenight
+alpine:
+  hosts:
+    pi2:
+      ansible_become_method: doas
+      neovim_mason_tools:
+        - "ansible-language-server"
+        - "bash-language-server"
+        - "pyright"
+        - "ruff"
+        - "jdtls"
+        - "java-debug-adapter"
+        - "java-test"
+        - "ansible-lint"
+        - "prettier"
+        - "google-java-format"
+        - "black"
+arch:
+  hosts:
+    ezekiel:
+    m3tis:
+      neovim_theme: tokyonight

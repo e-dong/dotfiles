@@ -13,5 +13,6 @@ xrandr \
   --output DP-5 --off
 
 source $HOME/scripts/wallpaper.sh
-feh --no-xinerama --bg-fill ${wallpaper_image}
-#feh ${wallpaper_image}
+# feh --no-xinerama --bg-fill ${wallpaper_image}
+feh --bg-fill ${wallpaper_image}
+

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SCRIPTS_HOME=$Home/scripts
-sleep 2
+SCRIPTS_HOME=$HOME/scripts
+# sleep 2
 
 width=${1:-1920}
 height=${2:-1080}
@@ -14,9 +14,6 @@ if [[ -z ${diagonal_len_in} ]]; then
   exit 1
 fi
 
-# Set custom resolution on the host via nvidia-settings
-nvidia-settings -a CurrentMetaMode="DPY-1: 1920x1080_144 @${width}x${height} +0+0 {ViewPortIn=${width}x${height}, ViewPortOut=1920x1080+0+0, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
-
 # Set up DPI from diagonal length of screen
 pixel_diag_len=$(echo "scale=5;sqrt(${width}^2+${height}^2)" | bc)
 physical_width=$(echo "scale=5;(${diagonal_len_in}/${pixel_diag_len})*${width}*25.4" | bc | awk '{printf("%d\n",$1 + 0.5)}'  )
@@ -27,13 +24,13 @@ echo "physical width: $physical_width"
 echo "physical height: $physical_height"
 
 display_output=$(xrandr | grep " primary" | awk '{ print $1 }')
-
 xrandr --output ${display_output} --fbmm "${physical_width}x${physical_height}"
 dpi=$(xdpyinfo | grep dots | awk '{print $2}' | cut -dx -f 1)
 echo "DPI: $dpi"
 
-echo "Xft.dpi: $dpi" | xrdb
-$HOME/scripts/wallpaper.sh
+${SCRIPTS_HOME}/set-nvidia-display.sh ${width} ${height} ${dpi}
 pkill dwm
 pkill slstatus
+
+exit 0
 

@@ -1,0 +1,56 @@
+---
+    # - name: Clone dotfiles
+    #   ansible.builtin.git:
+    #     repo: https://github.com/e-dong/dotfiles.git
+    #     dest: "{{ common_repo_root }}"
+    #     update: "yes"
+    #     version: main
+- name: Link .gitconfig
+  ansible.builtin.file:
+    src: "{{ common_repo_root }}/.gitconfig"
+    dest: "{{ ansible_facts['user_dir'] }}/.gitconfig"
+    state: link
+    force: true
+    follow: false
+- name: Link .tmux.conf
+  ansible.builtin.file:
+    src: "{{ common_repo_root }}/.tmux.conf"
+    dest: "{{ ansible_facts['user_dir'] }}/.tmux.conf"
+    state: link
+    force: true
+    follow: false
+- name: Link .config/ghostty
+  ansible.builtin.file:
+    src: "{{ common_repo_root }}/.config/ghostty"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/ghostty"
+    state: link
+    force: true
+    follow: false
+- name: Link .wezterm.lua
+  ansible.builtin.file:
+    src: "{{ common_repo_root }}/.wezterm.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.wezterm.lua"
+    state: link
+    force: true
+    follow: false
+- name: Link .local/theme
+  ansible.builtin.file:
+    src: "{{ common_repo_root }}/.local/theme"
+    dest: "{{ ansible_facts['user_dir'] }}/.local/theme"
+    state: link
+    force: true
+    follow: false
+- name: Link .screenlayout
+  ansible.builtin.file:
+    src: "{{ common_repo_root }}/.screenlayout"
+    dest: "{{ ansible_facts['user_dir'] }}/.screenlayout"
+    state: link
+    force: true
+    follow: false
+- name: Link scripts
+  ansible.builtin.file:
+    src: "{{ common_repo_root }}/scripts"
+    dest: "{{ ansible_facts['user_dir'] }}/scripts"
+    state: link
+    force: true
+    follow: false
