@@ -9,5 +9,15 @@ return {
 		vim.keymap.set("n", "<leader>gh",gitsigns.preview_hunk, { desc = "[G]it Preview [H]unk" })
 		vim.keymap.set({"n", "v"}, "<leader>gs", gitsigns.stage_hunk, { desc = "[G]it [S]tage Hunk" })
 		vim.keymap.set({"n", "v"}, "<leader>gr", gitsigns.reset_hunk, { desc = "[G]it [R]eset Hunk" })
+		vim.keymap.set("n", "]h",
+      function()
+        gitsigns.nav_hunk('next')
+      end,
+      { desc = "Next [H]unk" })
+		vim.keymap.set("n", "[h",
+      function()
+        gitsigns.nav_hunk('prev')
+      end,
+      { desc =  "Previous [H]unk" })
 	end,
 }
